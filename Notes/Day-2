@@ -34,7 +34,7 @@ class Demo{
 	For Static Method No need to call With Object, We can 	Direcctly with Class Name.
 	And here Static will act as instance or Object.
 
-
+* -------------------------------------------------------------------------------- *
 
 * Printing Data through Methods *
 
@@ -92,3 +92,49 @@ class Student{
 }
 
 
+
+
+-----------------------------------------------------------------------------------------
+
+* fibonacci Series Using Recursion *
+
+* Code *
+
+class Main{
+    static int fibonacci(int n){
+        // if(n==0){
+        //     return 0;
+        // }else if(n==1){
+        //     return 1;
+        // }
+        if(n<2){
+            return n;
+        }else{
+            return fibonacci(n-1)+fibonacci(n-2);
+        }
+    }
+    public static void main(String[] args){
+        
+        System.out.println(fibonacci(7)); 
+        
+    }
+}
+
+
+
+* Factorial using Recursion
+
+class Main {
+    static int factorial(int n){
+        if(n==0){
+            return 1;
+        }else{
+            return n * factorial(n-1);
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println(factorial(5));
+    }
+} 
+
+	
