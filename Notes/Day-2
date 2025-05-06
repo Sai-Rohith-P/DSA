@@ -1,0 +1,39 @@
+For Every class there will be a Consturctor.
+Constructor are used to Initialize the oBject , for Every class there will be a default constructor whenever....
+
+
+
+
+* code *
+
+class q2 {
+    public static void main(String[] args) {
+        Demo d1 = new Demo();
+        Demo d2 = new Demo();
+    }
+}
+class Demo{
+    static{
+        System.out.println("Ststic Block");       
+    }
+    Demo(){
+        System.out.println("Constructor");
+    }
+}
+
+
+
+* ------------------------------------------------------------------------- * 
+
+* Static *
+	Static block will be created with just Static Keyword.
+
+	It will Call Automatically. No need to call with Eighter 	Object Or Class.
+
+* Static Method *
+	For Static Method No need to call With Object, We can 	Direcctly with Class Name.
+	And here Static will act as instance or Object.
+
+
+
+
