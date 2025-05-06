@@ -92,8 +92,6 @@ class Student{
 }
 
 
-
-
 -----------------------------------------------------------------------------------------
 
 * fibonacci Series Using Recursion *
@@ -121,6 +119,28 @@ class Main{
 }
 
 
+class Main{
+    static int fibonacci(int n){
+        int a =0;
+        int b =1;
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum =a+b;
+            a=b;
+            b=sum;
+        }
+        return sum;
+    }
+    public static void main(String[] args){
+        
+        System.out.println(fibonacci(7)); 
+        
+    }
+}
+
+
+-------------------------------------------------------
+
 
 * Factorial using Recursion
 
@@ -137,4 +157,189 @@ class Main {
     }
 } 
 
+-------------------------------------------------------
 	
+* Finding HCF using Recursion.
+
+class Main {
+    static int hcf(int a,int b){
+        if(a%b ==0 ){
+            return b;
+        }else{
+            return hcf(b,a%b);
+        }
+        //  OR
+        
+        //  if(b ==0 ){
+        //     return a;
+        // }else{
+        //     return hcf(b,a%b);
+        // }
+    }
+    public static void main(String[] args) {
+        System.out.println(hcf(18,12));
+    }
+}
+
+
+
+
+* CONDITIONAL STATEMENTS *
+----------------------------
+
+if , else , elseif ladder , switch 
+
+" Conditional Statements are Used to check the condition and to print that relavent Block in Constant Time. "
+if
+---
+if(<Condtion>){
+	// Statements..
+	......
+}
+
+if else 
+--------
+if(<Condtion>){
+	// Statements..
+	......
+}else{
+	// Statements..
+	......
+}
+
+elseif
+-------
+
+if(<Condtion>){
+	// Statements..
+	......
+}else if(<Conditon>){
+	// Statements..
+	......
+}else if(<Condtion>){
+	// Statements..
+	......
+}else{
+	// Statements..
+	......
+}
+
+switch
+-------
+
+switch(<expression>){
+	case <conditon> :
+		Statements..;
+		....;
+		break;
+	case <conditon> :
+		Statements..;
+		....;
+		break;
+	case <conditon> :
+		Statements..;
+		....;
+		break;
+	default:
+		Statements..;
+		....;
+		break;
+}
+
+
+
+* CONTROL STATEMENTS *
+----------------------
+
+	" two types "
+        ---------------
+
+1. Entry Control Loops.
+------------------------
+	examples : for , while.
+	Syntex:
+	for(<Initialization> ; <Condition> ; <Increment / Decrement> ){
+		// statements
+		........
+	}
+
+	<initilization>
+	while( <Condition> ){
+		// statements
+		........
+		<Increment / Decrement>
+	}
+
+ " When we know the Range will Use For Loop  OR  Prefer to use For loop." 
+ " When we don't know the range prefer to use While Loop "
+
+* code for For loop *
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5};
+        int n = arr.length;
+        for(int i=0;i<n;i++){
+            System.out.println(arr[i]);
+        }
+    }
+}
+
+* Print For Loop for Printing 5 Table in the formate or ( 5 * 1 = 5 ) *
+class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        for(int i=1;i<=20;i++){
+            System.out.println(n+" * "+i+" = "+(n*i));
+        }
+    }
+}
+
+* Print While Loop for Printing 5 Table in the formate or ( 5 * 1 = 5 ) *
+
+class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        int i = 1;
+        while(i<=20){
+            System.out.println(n+" * "+i+" = "+(n*i));
+            i++;
+        }
+    }
+}
+
+
+2. Exit Control Loops.
+-----------------------
+	examples : dowhile
+	Syntex :
+
+	<initilization>
+	do{
+		// statements
+		........
+		<Increment / Decrement>
+
+	}while(  <Condition> );
+
+
+
+* Reverse An Number using Loops * 
+
+class Main{
+    static int reverseAnNumber(int n){
+        int module = 0;
+        int reverse = 0;
+        while(n>0){
+            module = n%10;
+            reverse = reverse*10+module;  
+            n = n/10;
+        }
+        return reverse;
+    }
+    public static void main(String[] args){
+        System.out.println(reverseAnNumber(367)); 
+        
+    }
+}
+
