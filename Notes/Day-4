@@ -1,0 +1,119 @@
+* Day-4 *
+
+Switch Case:
+------------
+
+Note:- 
+	-Cases have to be the same type as expressions, must be a contant or litera
+	- duplicate case value are not allowed.
+	- break is use to terminate the sequence
+	- if break is not used,it will continue to next Case
+	- default will execute when none of the above does.
+	- if default is not at the end, put after it.
+
+Syntex:
+
+switch( <expression> ){
+	case <expression or condition> :
+		<Statements>...
+		........
+		break;
+	case <expression or condition> :
+		<Statements>...
+		........
+		break;
+	default :
+		<Staements>...
+		........
+		break;
+}
+
+
+
+Code 
+-----
+
+1. Printing Day By Using Number
+
+import java.util.Scanner;
+public class PrintDaybyNum {
+
+        public static void main(String[] args) {
+
+            Scanner sc = new Scanner(System.in);
+            int n = sc.nextInt();
+            switch(n){
+                case 0:
+                    System.out.println("Sunday");
+                    break;
+                case 1:
+                    System.out.println("Monday");
+                    break;
+                case 2:
+                    System.out.println("Tuesday");
+                    break;
+                case 3:
+                    System.out.println("Wednesday");
+                    break;
+                case 4:
+                    System.out.println("Thrusday");
+                    break;
+                case 5:
+                    System.out.println("Friday");
+                    break;
+                case 6:
+                    System.out.println("Saturday");
+                    break;
+            }
+
+
+ * Enhance Switch Case *
+-----------------------
+            switch(n){
+                case 7 -> System.out.println("Sunday");
+                case 1 -> System.out.println("Monday");
+                case 2 -> System.out.println("Tuesday");
+                case 3 -> System.out.println("Wednesday");
+                case 4 -> System.out.println("Thrusday");
+                case 5 -> System.out.println("Friday");
+                case 6 -> System.out.println("Saturday");
+                default -> System.out.println("Sorry There is No 		day for Given number "+n);
+
+            }
+        }
+}
+
+
+* tenerary Operator *
+---------------------
+
+(Condition) ? statement1 : statement2 ;
+    int n=5;
+        boolean check =  (n==5) ? true : false;
+     System.out.println(check);
+
+
+
+
+* Enhanced For Loop or ForEach *
+--------------------------------
+In collections we dont have index values. in those situations  we have to use ForEach loop.
+
+
+Syntex :
+
+for(<intialization> : <ArrayName>){
+	Satemenst.. ( var );
+ }
+
+code :
+
+public class EnhancedForLoop {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,3,4,5,6};
+
+        for(int var : arr){
+            System.out.println(var);
+        }
+    }
+}
