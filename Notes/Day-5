@@ -1,0 +1,356 @@
+Day-5
+======
+* Arrays *
+-----------
+
+Defination:
+------------
+- Collection of Similar Kind of data in a continues Allocation.
+- In C and C++ , we have pointers so definitely Elements will Store 	in Continues Format.
+- In java, we don't have pointers then there is a chance of 	Elements might store in random Places.
+
+Syntex :-
+--------
+<Datatype>[] <ArrayName> ;
+
+Primitive and Non Primitive :
+-----------------------------
+Primitive Datatypes can't be Spilted or divided.
+ex : int float char
+
+Non-Primitive Datatype can be divided.
+ex: Strings and all the objects that created by User.
+
+
+class Node{
+	int data;
+	node next;
+}
+
+
+All the Objects will be stored in Heap Memory.
+All the Refresences will be stored in stack Memory.
+Stack Memory having Less Space compared to heap Memory.
+
+
+	int a = 10;
+        int b = 20;
+        int c = 30;
+        int d = 40;
+
+All the varibles are storing same datatypes.
+Instead of creating multiple variables create an array.
+        int[] arr = {10,20,30,40};
+
+if We create Multiple variables to get the data Simple we can print the variable.
+when comes to array if you want to print the data we can print using index values.
+And  by default index values will strat from zero.
+
+* A very first element of array will store in random place because in heap memory stores the data dynamically.
+and using second element of address of array only we can identify the first data address in array. *
+
+int[] arr = {10,20,30,40};
+declearation and initialization happend in same line.
+
+
+        int[] arr ; - declearation happend
+        arr= {10,20,30,40}; -intilization happend
+
+Printing Array Elements :
+int[] arr= {10,20,30,40};
+        
+        for(int i=0;i<arr.length;i++){
+            System.out.println(arr[i]);
+        }
+
+- to get the length of the array we have a menthod called ArrayName.length;
+
+-In String it is a StringName.length();
+
+* CamelCase and SnakeCase *
+----------------------------
+camelCase :
+-----------
+arrayName : - camelCase.
+	
+array_name : - snakecase. 
+
+In java,it is prepared to use CamelCase. to write production level code.
+
+Production level code:
+void additionOfTwoNumbers(){
+            
+}
+
+Not production level code , it is shortcut way (Not preferred).
+void add(){
+            
+}
+
+
+Type of printing Formates.
+-------------------------
+1. using Simple For loops.
+
+	int[] arr= {10,20,30,40};        
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+
+2.Using forEachLoop.
+
+	int[] arr= {10,20,30,40};        
+        for(int i:arr){
+            System.out.print(i+" ");
+        }
+
+* In forEach loop we don't need index values. *
+
+
+3. toString() is an in-Built Method. to print Array.
+	so it will accept only one argrument that is array only.
+
+        int[] arr= {10,20,30,40};
+        System.out.println( Arrays.toString(arr));
+
+
+
+Declearing the size of array using user input and initializing the values later.
+	
+Array having Fixed Size. if you declear an array size it can't be changed.
+		int[] arr = new int[5];
+
+int[] arr before = , it is for refresence first created. with the help of new keyword , actual object will be created in the heap memory.
+for that particular datatype, and size;
+
+if the array type  is integer, All the default values are zero.
+if it is a String , All default values are NULL.
+
+and NULL is a literal.
+we can assign NULL but cannot created.
+
+we are assigning Values.
+	int[] arr = new int[5];
+        arr[0] =1;
+        arr[1]=2;
+        arr[2]=3;
+        arr[3]=4;
+        arr[4]=5;
+
+Instead of this We can use loop.
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] arr = new int[5];
+        System.out.println("Enter Values : ");
+        for(int i=0;i<arr.length;i++){
+             arr[i] = in.nextInt();
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+}
+
+Each and Every Index will Act as an variable.
+
+When Ever we are trying to Assign or trying to get nth value of array.
+you will get an Exception called ArrayOutOfBound.
+
+
+Problems :
+----------
+
+printing Even and odd numbers count in an array.
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] arr ={1,2,3,4,5};
+        int EvenNumCount =0;
+        int OddNumCount =0;
+        System.out.println("Enter Values : ");
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]%2==0){
+                 EvenNumCount +=1;
+            }else{
+                OddNumCount +=1;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+        System.out.println("Even : "+EvenNumCount);
+        System.out.println("Odd : "+OddNumCount);
+
+    }
+}
+
+output:
+-------
+Enter Values : 
+[1, 2, 3, 4, 5]
+Even : 2
+Odd : 3
+
+
+Printing Highest Value:
+-----------------------
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] arr ={1,2,31,4,5};
+        System.out.println(Arrays.toString(arr));
+        int hightestValue=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(hightestValue<=arr[i]){
+                hightestValue = arr[i];
+            }
+        }
+        System.out.println("Highest Value From Array is : "+hightestValue);
+    }
+}
+
+Output :-
+---------
+[1, 2, 31, 4, 5]
+Highest Value From Array is : 31
+
+
+* Finding second Highest Number in an Array *
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {201, 201, 31, 44, 5, 21};
+        System.out.println(Arrays.toString(arr));
+
+        int highestNumber = Integer.MIN_VALUE;
+        int secondHighestNumber = Integer.MAX_VALUE;
+       
+        for(int num : arr){
+            if(highestNumber < num ){
+                secondHighestNumber = highestNumber;
+                highestNumber = num ;
+            }else if(num > secondHighestNumber && num != highestNumber){
+                secondHighestNumber = num;
+            }
+        }
+        
+        System.out.println("Highest Number is : "+highestNumber);
+        System.out.println("Second Highest Number is : "+secondHighestNumber);
+
+    }
+    
+}
+
+output :
+--------
+
+[201, 201, 31, 44, 5, 21]
+Highest Number is : 201
+Second Highest Number is : 44
+
+
+questions:
+1. Array is Sorted or not
+2. check given element is there or not ?
+3. given array we have elemenets only ones and zeros move all zeros to right side. [1,0,0,1,0,1,1,1,0,0]
+
+
+
+Answers :
+---------
+1. Array is Sorted or not
+code :
+
+import java.util.*;
+
+class Main {
+    static boolean sortedOrNot(int[] arr){
+        for(int i =1;i<arr.length;i++){
+            if(arr[i]<arr[i-1]){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        int[] arr = {23, 202, 203, 204, 205, 221};
+        System.out.println(Arrays.toString(arr));
+
+        if(sortedOrNot(arr)){
+            System.out.println("Sorted");
+        }else{
+            System.out.println("Not Sorted");
+        }
+
+    }
+    
+}
+
+
+2. check given element is there or not ?
+
+import java.util.*;
+
+class Main {
+    static boolean sortedOrNot(int[] arr,int n){
+        for(int num : arr){
+            if(num == n){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        int[] arr = {23, 202, 203, 204, 205, 221};
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Any Number : ");
+        int n = in.nextInt();
+        System.out.println(Arrays.toString(arr));
+        if(sortedOrNot(arr,n)){
+            System.out.println("Yes User Entered number is in Array.");
+        }else{
+            System.out.println("Sorry, There is No number like this.");
+        }
+    }
+    
+}
+
+output:
+
+Enter Any Number : 
+205
+[23, 202, 203, 204, 205, 221]
+Yes User Entered number is in Array.
+
+
+
+3. given array we have elemenets only ones and zeros move all zeros to right side. [1,0,0,1,0,1,1,1,0,0]
+code:
+import java.util.*;
+
+class Main {
+    static void moveAllZeroesToEnd(int[] arr){
+        int[] arr2 = new int[arr.length];
+        int count =0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==1){
+                arr2[count++] = 1;
+            }
+        }
+        
+        System.out.println(Arrays.toString(arr2));
+    }
+    public static void main(String[] args) {
+        int[] arr = {1,0,1,1,0,0,1,0,0,0,1,1,1,0,0,1};
+        moveAllZeroesToEnd(arr);
+    }
+    
+}
+
+output:
+[1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+
