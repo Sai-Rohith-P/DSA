@@ -1,0 +1,204 @@
+* DAY-8 *
+---------
+---------
+
+Problem Solving In Leetcode
+Question Numbers are :
+
+	1.455
+	2.860
+	3.55
+	
+Solve Above Problems.
+
+answers : 
+1.455
+code 
+
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+
+        Arrays.sort(g);
+        Arrays.sort(s);
+        
+        int l=0;
+        int r=0;
+
+        while(l<g.length && r<s.length){
+            if(s[r]>=g[l]){
+                l++;
+            }
+            r++;
+        }
+        return l;
+    }
+}
+
+2.860
+
+code 
+
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        int five=0;
+        int ten = 0;
+
+        for(int bill : bills){
+            if(bill == 5){
+                five++;
+            }else if(bill == 10){
+                if (five==0) return false;
+                five--;
+                ten++;
+            }else{
+                if(ten>0 && five>0){
+                    ten--;
+                    five--;
+                }else if(five>=3){
+                    five-=3;
+                }else{
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+}
+
+3. 55
+code
+
+class Solution {
+    public boolean canJump(int[] nums) {
+        int max= 0;
+        for(int i=0;i<nums.length;i++){
+           if(i>max){
+            return false;
+           }
+           max = Math.max(max,i+nums[i]);
+        }
+        return true;
+    }
+}
+
+
+
+* Recursions *
+===============
+
+- Function Call Itself, And itself it reach Base Condition.
+- There are two types in recursion
+- 1. function calling same function itself and itself.
+- 2. function calling another function itself and itself till it reach based condition
+
+- if we didn't mention base condition Properly, we get a exception called stackOverFlow.
+- Recursions are used to break the code, 
+
+
+write a code for factorial using Recursion. 
+
+5! = 5 * 4!
+4! = 4 * 3!
+3! = 3 * 2!
+2! = 2 * 1!
+1! = 1 * 0!
+
+for every recursive Call Elements will be pushed into a stack.
+after reaching base condition elements will be pop.
+
+for our question , 5 4 3 2 1 all these values will be pushed into a stack.
+
+
+code :
+------
+
+class Main {
+    static int fact(int n){
+        if(n==0){
+            return 1;
+        }else{
+            return n*fact(n-1);
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println(fact(5));
+    }
+}
+
+finding Min and Max
+import java.util.*;
+class Main {
+   
+    public static void main(String[] args) {
+        int max = 0;
+        int min = 100;
+        int[] arr={2,3,4,6,88,4};
+        for(int i=0;i<arr.length;i++){
+            max = Math.max(arr[i],max);
+            min = Math.min(arr[i],min);
+        }
+        System.out.println(min+" "+max);
+    }
+}
+
+Fibonacci Series using Recursion
+
+class Main {
+    static int fibanocci (int n){
+       if(n<=2){
+           return n;
+       } else{
+           return fibanocci(n-1)+fibanocci(n-2);
+       }
+       
+    }
+    public static void main(String[] args) {
+        System.out.println(fibanocci(7));
+    }
+}
+
+
+
+* Pass By Value And Pass By Refresence *
+========================================
+
+In java, we don't have pointers , so we can't use refresences So, java is pass by value.
+
+
+* Reverse An Array Using Two pointes.
+----------------------------------------
+import java.util.*;
+class Main {
+    static void swaping(int a, int b){
+        int temp = a;
+        a=b;
+        b=temp;
+    }
+    static void ReverseAnArray (int[] arr){
+      int i = 0;
+      int j = arr.length-1;
+      
+      while(i<j){
+          swaping(arr[i],arr[j]);
+        // int temp = arr[i];
+        // arr[i] = arr[j];
+        // arr[j] = temp;
+          i++;
+          j--;
+      }
+        System.out.println(Arrays.toString(arr));
+
+    }
+    public static void main(String[] args) {
+       int[] arr= {1,2,3,4,5};
+       System.out.println(Arrays.toString(arr));
+       ReverseAnArray(arr);
+    }
+}
+
+this is what call by value.
+
+
+
+
