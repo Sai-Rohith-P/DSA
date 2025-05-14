@@ -1,0 +1,233 @@
+Strings , Arrays , Recursions
+-----------------------------
+MIXED Problems
+--------------
+
+1 . From a given string, we have remove a character in a string using Recursion.
+
+- Assume That we are starting with 2 Strings input String and output String.
+- at initial Output String is empty.
+- we have few Steps those are 
+- take the first character from the string, and store in some variable , check the variable to our target variable if it matchs just return output string else append the character to output string.
+
+Next  slice the string by one character.
+
+
+
+Whenever input string becomes empty, we have tto stop the recursion.
+
+
+code :
+
+import java.util.*;
+class Main {
+    static String  StringMethod(String str1){
+        if(str1.isEmpty()){
+            return "";
+        }
+        char ch = str1.charAt(0);
+        if(ch == 'e'){
+            return StringMethod(str1.substring(1));
+        }else{
+            return ch + StringMethod(str1.substring(1));
+        }
+    }
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        System.out.println(str1);
+        System.out.println(StringMethod(str1));
+    }
+}
+output:
+
+hello
+hllo
+
+
+2. from a given String Skip a word and print rest of characters.
+
+import java.util.*;
+class Main{
+    static String stringMethod(String str){
+        if(str.isEmpty()){
+            return "";
+        }
+        char ch = str.charAt(0);
+        if(str.startsWith("Parul")){
+            return stringMethod(str.substring(5));
+        }else{
+            return ch +  stringMethod(str.substring(1));
+        }
+    }
+    public static void main(String[] args){
+        String str = "HelloParulUniversity";
+        System.out.println(str);
+        System.out.println(stringMethod(str));
+    }
+    
+}
+
+output:
+
+HelloParulUniversity
+HelloUniversity
+
+3. from the given String yoy have  to skip He not hello.
+
+import java.util.*;
+class Main{
+    static String stringMethod(String str){
+        if(str.isEmpty()){
+            return "";
+        }
+        char ch = str.charAt(0);
+        if(str.startsWith("He") && !(str.startsWith("Hello"))){
+            return stringMethod(str.substring(2));
+        }else{
+            return ch +  stringMethod(str.substring(1));
+        }
+    }
+    public static void main(String[] args){
+        String str = "HelloParulHeUniversity";
+        System.out.println(str);
+        System.out.println(stringMethod(str));
+    }
+    
+}
+
+output:
+-------
+HelloParulHeUniversity
+HelloParulUniversity
+
+
+HelloRohithHeHello
+HelloRohithHello
+
+
+
+Two Pointer Approach or Problems :
+----------------------------------
+----------------------------------
+
+
+step -1 : Initializes the pointers according to the question.
+step -2 : If you are starting first ponter at 0th index second pointer at last Index if you repeating first pointer at first index whenever both pointer both pointers crosses each other break the loop. 
+break breaking the loop do the relavant operation.
+
+
+
+
+
+reverse an array .
+
+import java.util.*;
+class Main {
+    static void swap(int i,int j,int[] arr){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    static void reverseMethod(int[] arr){
+       int i =0;
+       int j = arr.length-1;
+       
+       while(i<j){
+           swap(i,j,arr);
+           i++;
+           j--;
+       }
+        System.out.println(Arrays.toString(arr));
+       
+    }
+    public static void main(String[] args) {
+       int[] arr = {1,2,3,4,5};
+        System.out.println(Arrays.toString(arr));
+        reverseMethod(arr);
+    }
+}
+
+output :
+
+[1, 2, 3, 4, 5]
+[5, 4, 3, 2, 1]
+
+
+
+
+leetcode :
+
+09
+167
+
+
+1.	09 isPalindrome using two pointer
+class Main {
+    static boolean isPalindrome(int num){
+        String s = Integer.toString(num);
+        int i=0;
+        int j= s.length()-1;
+        
+        while(i<j){
+            if(s.charAt(i) != s.charAt(j)){
+               return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        int num = 1441;
+        System.out.println(num);
+        if(isPalindrome(num)){
+                    System.out.println("true");
+
+        }else{
+                    System.out.println("false");
+
+        }
+    }
+}
+output
+
+1441
+true
+
+2. 167
+
+code:
+-----
+
+import java.util.*;
+class Solution {
+    public static void main(String[] args){
+        int[] numbers = {2,7,11,15};
+        int target = 9;
+        int[] arr = twoSum(numbers,target);
+        System.out.println(Arrays.toString(arr));
+    }
+    public static int[] twoSum(int[] numbers, int target) {
+        int i=0;
+        int j=numbers.length-1;
+        int[] arr = new int[2];
+
+        while(i<j){
+            if(numbers[i]+numbers[j] > target){
+                j--;
+            }else if(numbers[i]+numbers[j] < target) {
+                i++;
+            }else{
+                arr[0]=i+1;
+                arr[1]=j+1;
+                return arr;
+            }
+           
+        }
+        return arr;
+    }
+}
+
+output:
+
+[1, 2]
