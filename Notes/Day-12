@@ -1,0 +1,159 @@
+Day-12
+------
+
+leetcode : 169,128,239
+
+Majority Of Elements
+--------------------
+
+step-1
+------
+from the given array Assume that starting index of my array is my majority elements , from that element compare rest of elements,
+if you got same value, increase the count,
+if you got different value decreasethe counter.
+step-2
+-------
+if counter becomes zero, it means till now you havn't seen any majority Elements.
+again selete the new target element is the very next element is your target element.
+At the end of for loop,
+if count counter is more that zero, it means that there is a majority elemenets.
+taking that target value, count how many times that is repeated in an array.
+
+if counter is greater that n/2 times so that is my majority element.
+
+
+code:
+=====
+
+
+import java.util.*;
+class Main {
+    static void majorityElement(int[] arr){
+        int counter = 1;
+        int target = arr[0];
+        for(int i=1;i<arr.length-1;i++){
+            if(arr[i]==target){
+                counter++;
+            }else{
+                counter--;
+            }
+            
+            if(counter == 0){
+                target = arr[i+1];
+                counter = 0;
+            }
+            
+        }
+        int c =0;
+        for(int  i=0;i<arr.length;i++){
+            if(arr[i]==target){
+                c++;
+            }
+        }
+        if(c>arr.length/2){
+            System.out.println(target);
+        }else{
+            System.out.println(0);
+        }
+
+    }
+    public static void main(String[] args) {
+        int[] arr = {1,1,1,1,2,2,2,3,2,2,2,2};
+        majorityElement(arr);
+    }
+}
+
+
+
+
+
+
+2. Consecutive Sequence Numbers.
+---------------------------------
+
+step1
+-----
+CREATE A SET 
+initialization
+run a loop take the values from array and push into the set using insert(); method.
+start Iterating set value. we have to find eighter the element is starting or not.
+by decreasing the value and checking that value in the set,
+if you got starting value, then start comparing the values.
+
+
+
+code:
+------
+
+import java.util.*;
+class Main {
+    static void method(int[] arr){
+        Set<Integer> arr1 = new HashSet<Integer>(); 
+        for(int num:arr){
+            arr1.add(num);
+        }
+        
+        int starting = 0;
+        int c =0;
+        int max=0;
+        int current_value = 0;
+        for(int num:arr1){
+            if(!(arr1.contains(num-1))){
+                starting = num;
+                c=1;
+                current_value=num;
+                while(arr1.contains(current_value+1)){
+                    c++;
+                    current_value++;
+                }
+                max = Math.max(max,c);
+            }
+        }
+        System.out.println(max);
+    }
+    public static void main(String[] args) {
+        int[] arr = {100,4,200,1,3,2,101,102,103,104,105};
+        System.out.println(Arrays.toString(arr));
+        method(arr);
+    }
+}
+
+output
+------
+
+[100, 4, 200, 1, 3, 2, 101, 102, 103, 104, 105]
+6
+
+
+
+3.sliding window
+----------------
+
+// Sliding Window concept.
+
+public class RandomlyPicked3Cards {
+    static void randomPickedcards(int[] arr,int k){
+        int a=arr[0];
+        int b=arr[1];
+        int c=arr[2];
+        int max =0;
+        for(int i=0;i<(arr.length/2)+1;i++){
+           int sum=a+b+c;
+            max = Math.max(max,sum);
+
+            c=b;
+            b=a;
+            a=arr[arr.length-i-1];
+
+        }
+        System.out.println(max);
+    }
+    public static void main(String[] args) {
+        int[] arr={1,2,3,4,5,6,1};
+        int k=3;
+        randomPickedcards(arr,k);
+    }
+}
+
+we have to run with two pointers but this one using three pointer.
+
