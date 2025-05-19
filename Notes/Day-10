@@ -1,0 +1,271 @@
+* Strings *
+============
+
+- Strings are classes.
+- Arrays Are Objects.
+- the sequence of characters is called strings.
+- Strings are immutable.
+- all the array Objects will be created in heap memory but string are created inside heap memory in string pool.
+- once a string got created it will be created perminentaly or fixed , it means we can't modify the strings.
+- Here
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        String a = "Hello";
+        String b = "Hello";
+        System.out.println(a==b);
+    }
+}
+output is 
+true
+
+because that is stored in string pool
+so both varibles are assigning same data. that's why it show true.
+
+
+=> this == ( double equal to ) is used to compare address location.
+
+=> a.equals(b)  this equals() method is used for compare data not address.
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+       
+        String a = new String("Hello");
+        String b = new String("Hello");
+        System.out.println(a==b);
+    }
+}
+
+output:
+false
+
+because we are creating two different objects so that
+two different objects are located in two different locations.
+
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        String a = new String("Hello");
+        String b = new String("Hello");
+        System.out.println(a.equals(b));
+    }
+}
+
+output : 
+true
+
+
+=> In array if you want to get a length so we use arr.length 
+here length is a keyword or field
+=> But in string if you want to length of string we use str.length() here length() is a method it returns number of characters.
+
+
+reverse an array .
+================
+
+import java.util.*;
+class Main {
+    static void swap(int i,int j,int[] arr){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    static void reverseMethod(int[] arr){
+       int i =0;
+       int j = arr.length-1;
+       
+       while(i<j){
+           swap(i,j,arr);
+           i++;
+           j--;
+       }
+        System.out.println(Arrays.toString(arr));
+       
+    }
+    public static void main(String[] args) {
+       int[] arr = {1,2,3,4,5};
+        System.out.println(Arrays.toString(arr));
+        reverseMethod(arr);
+    }
+}
+
+output :
+
+[1, 2, 3, 4, 5]
+[5, 4, 3, 2, 1]
+
+here we can reverse an array like this.
+
+but in string we can revers an a string like this. because...
+reverse an a string
+--------------------
+
+import java.util.*;
+class Main {
+    static void swap(String str,int i,int j){
+        char temp = str.charAt(i);
+       str.charAt(i)=str.charAt(j);
+        str.charAt(j) = temp;
+    }
+    static void reversingString(String str){
+        int i=0;
+        int j=str.length()-1;
+        
+        while(i<j){
+            swap(str,i,j);
+            i++;
+            j--;
+        }
+        System.out.println(str);
+    }
+    public static void main(String[] args) {
+       String str = "HelloSir";
+       System.out.println(str);
+       reversingString(str);
+    }
+}
+
+
+see because reverse a string not work here because string are immutable .
+so we can change string to array of characters 
+so  that, it will work .
+
+
+change string to array of characters.
+-------------------------------------
+
+import java.util.*;
+class Main {
+    static void swap(char[] strArr,int i,int j){
+        char temp = strArr[i];
+        strArr[i]=strArr[j];
+        strArr[j] = temp;
+    }
+    static void reversingString(char[] strArr){
+        int i=0;
+        int j=strArr.length-1;
+        
+        while(i<j){
+            swap(strArr,i,j);
+            i++;
+            j--;
+        }
+        System.out.println(new String(strArr));
+         
+    }
+    public static void main(String[] args) {
+       String str = "HelloSir";
+       char[] strArr = str.toCharArray();
+       System.out.println(str);
+      reversingString(strArr);
+    }
+}
+
+
+leetcode
+ 344
+ 345
+ 90
+
+1 . code : 344
+
+
+class Solution {
+    static void swap(char[] s,int i,int j){
+        char temp = s[i];
+        s[i]=s[j];
+        s[j]=temp;
+    }
+    public void reverseString(char[] s) {
+        int i=0;
+        int j=s.length-1;
+
+        while(i<j){
+            swap(s,i,j);
+            i++;
+            j--;
+        }
+        System.out.println(Arrays.toString(s));
+    }
+}
+
+
+2.345
+code
+
+import java.util.*;
+public class ReverseVOWELSinString {
+    static boolean check(char[] s,int n){
+        String volwels = "aeiouAEIOU";
+        if(volwels.indexOf(s[n])!=-1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    static void swap(char[] s,int i,int j){
+        char temp = s[i];
+        s[i]=s[j];
+        s[j]=temp;
+    }
+    static void reverseVowels(char[] s){
+        int i = 0;
+        int j = s.length-1;
+
+        while(i<j){
+            if(check(s,i) && (check(s,j))){
+                swap(s,i,j);
+                i++;
+                j--;
+            }else if(check(s,i)){
+                j--;
+            }else{
+                i++;
+            }
+        }
+        System.out.println(s);
+    }
+    public static void main(String[] args) {
+        String str = "IceCreAm";
+        System.out.println(str);
+        char[] s = str.toCharArray();
+        reverseVowels(s);
+//        System.out.println(str);
+//        System.out.println(Arrays.toString(s));
+    }
+}
+
+error?
+
+
+
+String Methods:
+---------------
+
+
+
+
+
+
+* SubSets * ( 2^n )
+===========
+
+For a given Array , we have to print possiable arrays.
+it should be in a sequence but not continues.... is called subset.
+and in an array,if you have n Number os elemenets we will get   2^n subsets.
+
+
+
+
+* BrackTracking *
+------------------
+- its a Example of Recursion.
+
+- In Recursion we have only two possibility eighter if or else.
+- And in brackTracking we have multiple possibilities.
+- Most Of the problems whenever we reach base case, we have to print all base case elements.
+And remove last element In every recursive call. then the backtracking will complete other wise it only Recursion.
+
