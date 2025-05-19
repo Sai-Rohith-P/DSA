@@ -1,0 +1,176 @@
+Day-11
+------
+
+leetcode : 75,11,1,169
+-------------------
+
+Dutch National Flag. ( leetcode 75 )
+====================
+
+Initilize three pointers.
+l at 0th index, M at 0th index and h at n-1 index
+
+       int l=0;
+       int m=0;
+       int h = arr.length-1;
+
+the elements between m and h , are unsorted, we make to make sort between m to h,
+
+if arr[m] ==0 move to swap with front , both l and m are increment
+if arr[m] is == 1 just increase m;
+if arr[m] ==2 move to swap with end h will be decrement.
+
+1. code for sorting array of elements.
+------------------------------------
+
+import java.util.*;
+class Main {
+    static void swap(int[] arr,int n1,int n2){
+        int temp = arr[n2];
+        arr[n2] = arr[n1];
+        arr[n1] = temp;
+    }
+    static void sorting(int[] arr){
+       int l=0;
+       int m=0;
+       int h = arr.length-1;
+       
+       while(m<=h){
+           if(arr[m]==0){
+               swap(arr,l,m);
+               l++;
+               m++;
+           }else if(arr[m]==1){
+               m++;
+           }else{
+               swap(arr,m,h);
+               h--;
+           }
+       }
+       System.out.println(Arrays.toString(arr));
+    }
+    public static void main(String[] args) {
+        int[] arr = {1,0,2,0,1,2,1,0,0,1};
+        System.out.println(Arrays.toString(arr));
+        sorting(arr);
+    }
+}
+
+output:
+-------
+
+[1, 0, 2, 0, 1, 2, 1, 0, 0, 1]
+[0, 0, 0, 0, 1, 1, 1, 1, 2, 2]
+
+
+
+
+	     * Collection Framework. *
+	     ==========================
+
+	List		Set 		Map
+	------		-----		-----
+     - ArrayList	- Hashset	  - hashMap
+     - LinkedList	- LinkedHashSet   - LinkedHashmap
+     - Vector 		- TreeSet	  - Treemap
+
+
+
+- List Set and Map these are Interfaces.
+- Rest of all these things are classes
+interface contains Incomplete methods. class contains complete methods.
+
+list:
+------
+List Is Ordered. which can all duplicates.
+
+set:
+----
+set is unorder, which won't access Duplicate.
+
+Maps:
+-----
+Maps contains Key-Value pairs
+
+
+
+2. leetcode  ( 11 )
+
+Container with Most Water.
+
+code:
+-----
+
+import java.util.*;
+class Main {
+    public static int maxHeight(int[] arr){
+        int i=0;
+        int j=arr.length-1;
+        
+        int max = 0;
+        while(i<j){
+            int min = Math.min(arr[i],arr[j]);
+            int diff = j-i;
+            int maxx = min*diff;
+            max = Math.max(max,maxx);
+            
+            if(arr[i]<arr[j]){
+                i++;
+            }else{
+                j--;
+            }
+        }
+        return max;
+    }
+    public static void main(String[] args) {
+    int[] arr = {1,8,6,2,5,4,8,3,7};
+    System.out.println(Arrays.toString(arr));
+    System.out.println(maxHeight(arr));
+
+    }
+}
+
+output
+
+[1, 8, 6, 2, 5, 4, 8, 3, 7]
+49
+
+[1, 1]
+1
+
+
+
+
+set:
+----
+
+Set<Integer> values  = new HashSet<>();
+
+
+
+
+import java.util.*;
+class Main {
+    static int[] method(int[] arr,int target){
+        Set<Integer> values = new HashSet<>();
+    
+    for(int i=0;i<arr.length;i++){
+        values.add(arr[i]);
+        
+        int remaining = target - arr[i];
+        if(values.contains(remaining)){
+            return new int[]{remaining,arr[i]};
+        }
+    }  
+    return new int[0];
+    }
+    public static void main(String[] args) {
+    // int[] arr= {2,7,11,15};
+    int[] arr= {3,2,4};
+    int target =9;
+    
+    System.out.println(Arrays.toString(method(arr,target)));
+  }
+  
+  
+}
