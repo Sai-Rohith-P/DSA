@@ -1,0 +1,93 @@
+class Solution {
+    public static void sort(int[] arr){
+        for(int i=0;i<arr.length;i++){
+            int j=i;
+            while(j>0 && arr[j-1]>arr[j]){
+                int temp = arr[j-1];
+                arr[j-1]=arr[j];
+                arr[j]=temp;
+                j--;
+            }
+        }
+    }
+    public int thirdMax(int[] nums) {
+        HashSet<Integer> st = new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+            if(st.isEmpty() || !st.contains(nums[i])){
+                st.add(nums[i]);
+            }
+        }
+        int[] arr = new int[st.size()];
+        int index=0;
+        for(int i:st){
+            arr[index++] = i;
+        }
+        sort(arr);
+
+        if(arr.length <3){
+            return arr[arr.length-1];
+        }
+        return arr[arr.length-3];
+    }
+}
+
+
+
+// class Solution {
+//     public int thirdMax(int[] nums) {
+//         int n = nums.length;
+        
+//         if(n <3){
+//             if(nums[0]>nums[1]){
+//                 return nums[0];
+//             }else{
+//                 return nums[1];
+//             }
+//         }
+//         int firstlast = nums[0];
+//         for(int i=1;i<n;i++){
+//             if(nums[i] > firstlast){
+//                 firstlast = nums[i];
+//             }
+//         }
+
+//         int secondLast = Integer.MIN_VALUE;
+//         for(int i=0;i<n;i++){
+//             if(nums[i] > secondLast && nums[i] < firstlast){
+//                 secondLast = nums[i];
+//             }
+//         }
+
+//         int thirdLast = Integer.MIN_VALUE;
+//         for(int i=0;i<n;i++){
+//             if(nums[i] > thirdLast && nums[i] < secondLast){
+//                 thirdLast = nums[i];
+//             }
+//         }
+
+//         return thirdLast;
+//     }
+// }
+class Solution {
+    public int thirdMax(int[] arr) {
+        long first=Long.MIN_VALUE,second=Long.MIN_VALUE,third=Long.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            long num = arr[i];
+            if (num == first || num == second || num == third) continue;
+            if(num>first){
+                third = second;
+                second = first;
+                first = num;
+            }else if(num > second){
+                third = second;
+                second = num;
+            }else if(num >third){
+                third =num;
+            }
+        }
+        
+        // return (third == Long.MIN_VALUE) ? first.intValue() : third.intValue();
+        return (third == Long.MIN_VALUE) ? (int) first : (int) third;
+
+    }
+}
