@@ -1,0 +1,21 @@
+// day-3
+import java.util.*;
+class Main {
+    static void findminmax(int[] arr){
+        int min=Integer.MAX_VALUE;
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i] > max){
+                max=arr[i];
+            }
+            if(arr[i]<min){
+                min=arr[i];
+            }
+        }
+        System.out.println("MAX "+max+" min "+min);
+    }
+    public static void main(String[] args) {
+        int[] arr = {3,4,5,2,6,7,8};
+        findminmax(arr);
+    }
+}
